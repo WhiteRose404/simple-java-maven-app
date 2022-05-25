@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/WhiteRose404/simple-java-maven-app.git']]])
+            }
+        }
+        stage("second stage") {
+            steps {
+                echo "1! step."
+                echo "2& Nice "
+            }
+        }
+        stage("third stage") {
+            steps {
+                echo "4! step."
+                echo "5& COOL "
+            }
+        }
+    }
+}
